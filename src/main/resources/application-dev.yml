@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=utf-8 #&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root123456
+
+mybatis:
+  mapper-locations: classpath:sql/*Sql.xml
+  type-aliases-package: com.wx.dao
+  configuration:
+    map-underscore-to-camel-case: true # https://blog.csdn.net/weixin_43287239/article/details/98867722
