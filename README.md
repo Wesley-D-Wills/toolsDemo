@@ -1,7 +1,13 @@
-# springboot-mybatis
+# toolsDemo
+[toc]
+toolsDemo 是一个中间件的使用集合，每个module是一个简单的demo。
+ * module - mySqlDemo
+ * module - jedis
+
+## (mysqlDemo) springboot-mybatis
 springboot继承mybatis，实现CURD
 
-# 创建数据库
+### 创建数据库
 1。 mac下启动、关闭、重启mysql
 https://www.jianshu.com/p/b0cca588f14d
 
@@ -14,3 +20,5 @@ https://www.jianshu.com/p/b0cca588f14d
    
 4。 最终将代码上传到github
 https://blog.csdn.net/qq_40307379/article/details/106251932
+
+## jedis
