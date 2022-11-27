@@ -11,6 +11,8 @@
     <modules>
         <module>jedis</module>
         <module>mySqlDemo</module>
+        <module>springboot-hello</module>
+        <module>anno-demo</module>
     </modules>
 
     <properties>
