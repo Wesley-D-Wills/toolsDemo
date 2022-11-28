@@ -1,5 +1,6 @@
 package com.hello.springboothello.controller;
 
+import com.hello.springboothello.dto.ResponseResult;
 import com.hello.springboothello.entity.User;
 import com.hello.springboothello.service.UserService;
 import org.slf4j.Logger;
@@ -21,14 +22,14 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/add")
-    public User addUser(User user) {
+    public ResponseResult<User> addUser(User user) {
         logger.info("add user {}", user);
         userService.add(user);
-        return user;
+        return ResponseResult.success(user);
     }
 
     @GetMapping("list")
-    public List<User> getUsers() {
-        return userService.list();
+    public ResponseResult<List<User>> getUsers() {
+        return ResponseResult.success(userService.list());
     }
 }

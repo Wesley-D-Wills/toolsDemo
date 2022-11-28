@@ -22,3 +22,13 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+# 通过yml配置文件配置日志
+#logging:
+#  level:
+#    root: info
+#    com:
+#      hello:
+#        springboothello: WARN
+
+
