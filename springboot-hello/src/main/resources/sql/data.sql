@@ -1,1 +1,1 @@
-insert into `tb_user`(`user_id`, `user_name`) values(1, 'h2');
+insert into `tb_user`(`user_id`, `username`) values(1, 'h2');

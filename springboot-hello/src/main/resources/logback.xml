@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <!--    配置参考： https://www.cnblogs.com/hyzs/p/16793933.html
+        和 https://blog.csdn.net/weixin_42259925/article/details/103954982
+        以及 https://www.pdai.tech/md/spring/springboot/springboot-x-hello-logback.html-->
+
+　　　<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+　　　　　 <encoder>
+　　　　　　　　　<pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+　　　　　 </encoder>
+　　　</appender>
+
+
+    <!-- logger begin -->
+    <!-- 本项目的日志记录，分级打印 -->
+    <logger name="com.hello.springboothello" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <!-- SPRING框架日志 -->
+    <logger name="org.springframework" level="INFO" additivity="false">
+<!--        <appender-ref ref="SPRING"/>-->
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+<!--    <root level="TRACE">-->
+<!--        <appender-ref ref="ALL"/>-->
+<!--    </root>-->
+
+    <!--  TRACE、DEBUG、INFO、WARN 和 ERROR  ?-->
+　　　<root level="INFO">
+　　　　　　<appender-ref ref="STDOUT" />
+　　　</root>
+    <!-- logger end -->
+</configuration>
