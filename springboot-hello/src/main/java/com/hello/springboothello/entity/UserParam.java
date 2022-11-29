@@ -1,5 +1,6 @@
 package com.hello.springboothello.entity;
 
+import com.hello.springboothello.annotations.TelephoneNumber;
 import com.hello.springboothello.entity.groups.UserGroups;
 import lombok.Builder;
 import lombok.Data;
@@ -35,6 +36,10 @@ public class UserParam  {
     @Max(value = 100, message = "Please input valid age 0-100")
     @Min(value = 0, message = "Please input valid age 0-100")
     private int age;
+
+    @TelephoneNumber
+//    @NotEmpty(message = "telephoneNumber could not be empty")
+    private String telephoneNumber;
 
 //    @Valid
 //    private AddressParam address;
