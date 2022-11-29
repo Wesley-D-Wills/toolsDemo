@@ -39,32 +39,32 @@ public class UserController {
     }
 
     @PostMapping("add")
-    public ResponseEntity<String> addUserParam(@Validated(UserGroups.AddValidationGroup.class) @RequestBody UserParam userParam,
-                                                  BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            List<ObjectError> errors = bindingResult.getAllErrors();
-            errors.forEach(p -> {
-                FieldError fieldError = (FieldError) p;
-                logger.error("Invalid parameter : object - {}, field - {}, errorMessage - {}",
-                        fieldError.getObjectName(), fieldError.getField(), fieldError.getDefaultMessage());
-            });
-            return ResponseEntity.badRequest().body("invalid paramter");
-        }
+    public ResponseEntity<String> addUserParam(@Validated(UserGroups.AddValidationGroup.class) @RequestBody UserParam userParam
+                                                 /* BindingResult bindingResult*/) {
+//        if (bindingResult.hasErrors()) {
+//            List<ObjectError> errors = bindingResult.getAllErrors();
+//            errors.forEach(p -> {
+//                FieldError fieldError = (FieldError) p;
+//                logger.error("Invalid parameter : object - {}, field - {}, errorMessage - {}",
+//                        fieldError.getObjectName(), fieldError.getField(), fieldError.getDefaultMessage());
+//            });
+//            return ResponseEntity.badRequest().body("invalid paramter");
+//        }
         return ResponseEntity.ok("success");
     }
 
     @PostMapping("update")
-    public ResponseEntity<String> updateUserParam(@Validated @RequestBody UserParam userParam,
-                                                  BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            List<ObjectError> errors = bindingResult.getAllErrors();
-            errors.forEach(p -> {
-                FieldError fieldError = (FieldError) p;
-                logger.error("Invalid parameter : object - {}, field - {}, errorMessage - {}",
-                        fieldError.getObjectName(), fieldError.getField(), fieldError.getDefaultMessage());
-            });
-            return ResponseEntity.badRequest().body("invalid paramter");
-        }
+    public ResponseEntity<String> updateUserParam(@Validated @RequestBody UserParam userParam
+                                                 /* BindingResult bindingResult*/) {
+//        if (bindingResult.hasErrors()) {
+//            List<ObjectError> errors = bindingResult.getAllErrors();
+//            errors.forEach(p -> {
+//                FieldError fieldError = (FieldError) p;
+//                logger.error("Invalid parameter : object - {}, field - {}, errorMessage - {}",
+//                        fieldError.getObjectName(), fieldError.getField(), fieldError.getDefaultMessage());
+//            });
+//            return ResponseEntity.badRequest().body("invalid paramter");
+//        }
         return ResponseEntity.ok("success");
     }
 }
