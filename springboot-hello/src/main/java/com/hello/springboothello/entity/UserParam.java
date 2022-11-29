@@ -14,7 +14,10 @@ import javax.validation.constraints.*;
 @Builder
 public class UserParam  {
 
+    // 1、参数校验，分组校验
     @NotEmpty(message = "userId could not be empty", groups = UserGroups.AddValidationGroup.class)
+    // 2、参数校验国际化
+    @NotEmpty(message = "{user.msg.userId.notEmpty}")
     private String userId;
 
     @NotEmpty(message = "email could not be empty")

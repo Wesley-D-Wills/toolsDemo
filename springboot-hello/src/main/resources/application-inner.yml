@@ -22,6 +22,11 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  # 配置国际化校验,在消息头中指定 locale： zh_CH / en_US
+  messages:
+    basename: messages/validation
+
+
 
 # 通过yml配置文件配置日志
 #logging:
