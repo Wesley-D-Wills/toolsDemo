@@ -1,20 +1,19 @@
 package com.hello.springboothello.entity;
 
+import com.hello.springboothello.entity.groups.UserGroups;
 import lombok.Builder;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
-import javax.validation.Valid;
 import javax.validation.constraints.*;
-import java.io.Serializable;
 
 // 参数校验
 @Data
 @Builder
 public class UserParam  {
 
-    @NotEmpty(message = "userId could not be empty")
+    @NotEmpty(message = "userId could not be empty", groups = UserGroups.AddValidationGroup.class)
     private String userId;
 
     @NotEmpty(message = "email could not be empty")
