@@ -3,6 +3,8 @@ package com.hello.springboothello.dto;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
 @Builder
 public class ResponseResult<T> {
@@ -23,12 +25,25 @@ public class ResponseResult<T> {
                 .build();
     }
 
+    public static <T extends Serializable> ResponseResult<T> fail(String message) {
+        return fail(null, message);
+    }
+
     public static <T> ResponseResult<T> fail(T data, String message) {
         return ResponseResult.<T>builder()
                 .data(data)
                 .message(message)
                 .timestamp(System.currentTimeMillis())
                 .status(ResponseStatus.FAIL.getResponseCode())
+                .build();
+    }
+
+    public static <T> ResponseResult<T> buildResult(T data, ResponseStatus responseStatus) {
+        return ResponseResult.<T>builder()
+                .data(data)
+                .message(responseStatus.getDescription())
+                .timestamp(System.currentTimeMillis())
+                .status(responseStatus.getResponseCode())
                 .build();
     }
 }

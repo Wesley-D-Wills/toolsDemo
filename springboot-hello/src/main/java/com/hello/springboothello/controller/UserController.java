@@ -2,14 +2,19 @@ package com.hello.springboothello.controller;
 
 import com.hello.springboothello.dto.ResponseResult;
 import com.hello.springboothello.entity.User;
+import com.hello.springboothello.entity.UserParam;
 import com.hello.springboothello.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,7 +26,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/add")
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public ResponseResult<User> addUser(User user) {
         logger.info("add user {}", user);
         userService.add(user);
@@ -31,5 +36,35 @@ public class UserController {
     @GetMapping("list")
     public ResponseResult<List<User>> getUsers() {
         return ResponseResult.success(userService.list());
+    }
+
+    @PostMapping("add")
+    public ResponseEntity<String> addUserParam(@Validated @RequestBody UserParam userParam,
+                                                  BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            errors.forEach(p -> {
+                FieldError fieldError = (FieldError) p;
+                logger.error("Invalid parameter : object - {}, field - {}, errorMessage - {}",
+                        fieldError.getObjectName(), fieldError.getField(), fieldError.getDefaultMessage());
+            });
+            return ResponseEntity.badRequest().body("invalid paramter");
+        }
+        return ResponseEntity.ok("success");
+    }
+
+    @PostMapping("update")
+    public ResponseEntity<String> updateUserParam(@Validated @RequestBody UserParam userParam,
+                                                  BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            errors.forEach(p -> {
+                FieldError fieldError = (FieldError) p;
+                logger.error("Invalid parameter : object - {}, field - {}, errorMessage - {}",
+                        fieldError.getObjectName(), fieldError.getField(), fieldError.getDefaultMessage());
+            });
+            return ResponseEntity.badRequest().body("invalid paramter");
+        }
+        return ResponseEntity.ok("success");
     }
 }
