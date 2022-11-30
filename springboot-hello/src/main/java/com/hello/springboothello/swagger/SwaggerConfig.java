@@ -20,7 +20,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  *  http://localhost:8090/swagger-ui/index.html
  *
  * 在Controller中添加ApiOperation注解
- * @ApiOperator(value="接口名", httpMethod="请求方式"，notes="详细说明")
+ *  @ApiOperator(value="接口名", httpMethod="请求方式"，notes="详细说明")
+ *
+ * 处理swagger生成接口之外，还可以使用swagger通过yaml文件生成服务端客户端代码：
+ *  在线编辑 yaml文件：https://editor.swagger.io
+ *  1、具体参考：https://blog.csdn.net/Min_Monk/article/details/104870844
+ *  2、使用插件的方式生成代码：https://blog.csdn.net/weixin_40669549/article/details/108125933
  */
 @Configuration
 @EnableOpenApi
