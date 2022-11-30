@@ -1,0 +1,3 @@
+1、本地redis 安装包路径
+~/Documents/environment/redis-stack-server-6.2.0-v1.monterey.arm64/
+2、直接启动redis-server

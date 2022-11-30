@@ -25,6 +25,20 @@ spring:
   # 配置国际化校验,在消息头中指定 locale： zh_CH / en_US
   messages:
     basename: messages/validation
+  # 配置连接redis的参数
+  redis:
+    ssl: false
+    port: 6379
+    host: 127.0.0.1
+    database: 0
+    timeout: 1000
+#    password: root
+    lettuce: # 是一个高性能基于java编写的redis驱动架构
+      pool:
+        max-active: 100
+        max-wait: -1
+        min-idle: 0
+        max-idle: 20
 
 
 
