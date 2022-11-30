@@ -5,6 +5,7 @@ import com.hello.springboothello.entity.groups.UserGroups;
 import com.hello.springboothello.entity.User;
 import com.hello.springboothello.entity.UserParam;
 import com.hello.springboothello.service.UserService;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @ApiOperation(value = "user接口", httpMethod = "GET", notes = "这个是添加user的接口")
     public ResponseResult<User> addUser(User user) {
         logger.info("add user {}", user);
         userService.add(user);
