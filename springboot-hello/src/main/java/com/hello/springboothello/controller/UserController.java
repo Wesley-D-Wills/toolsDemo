@@ -36,8 +36,27 @@ public class UserController {
     }
 
     @GetMapping("list")
+    @ApiOperation(value = "list接口", httpMethod = "GET", notes = "获取全部user数据")
     public ResponseResult<List<User>> getUsers() {
         return ResponseResult.success(userService.list());
+    }
+
+    @GetMapping("find/{userId}")
+    @ApiOperation(value = "查找user接口", httpMethod = "GET", notes = "根据id查找user")
+    public ResponseResult<User> findUser(@PathVariable Integer userId) {
+        return ResponseResult.success(userService.findById(userId));
+    }
+
+    @GetMapping("delete/{userId}")
+    @ApiOperation(value = "user删除接口", httpMethod = "GET", notes = "这个是删除user的接口")
+    public ResponseResult<Integer> deleteUser(@PathVariable Integer userId) {
+        return ResponseResult.success(userService.deleteById(userId));
+    }
+
+    @PostMapping("updateUser")
+    @ApiOperation(value = "update接口", httpMethod = "POST", notes = "这个是修改user的接口")
+    public ResponseResult<Integer> updateUser(@RequestBody User user) {
+        return ResponseResult.success(userService.update(user));
     }
 
     @PostMapping("add")

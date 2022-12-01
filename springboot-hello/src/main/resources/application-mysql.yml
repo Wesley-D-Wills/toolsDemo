@@ -1,0 +1,45 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=utf-8 #&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root123456
+  # 配置国际化校验,在消息头中指定 locale： zh_CH / en_US
+  messages:
+    basename: messages/validation
+  # 配置连接redis的参数
+  redis:
+    ssl: false
+    port: 6379
+    host: 127.0.0.1
+    database: 0
+    timeout: 1000
+    #    password: root
+    lettuce: # 是一个高性能基于java编写的redis驱动架构
+      pool:
+        max-active: 100
+        max-wait: -1
+        min-idle: 0
+        max-idle: 20
+
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
+  type-aliases-package: com.hello.springboothello.dao.mybatis
+  configuration:
+    map-underscore-to-camel-case: true # https://blog.csdn.net/weixin_43287239/article/details/98867722
+
+
+
+
+# 通过yml配置文件配置日志
+#logging:
+#  level:
+#    root: info
+#    com:
+#      hello:
+#        springboothello: WARN
+
+

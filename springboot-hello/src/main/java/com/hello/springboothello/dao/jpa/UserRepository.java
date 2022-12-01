@@ -1,4 +1,4 @@
-package com.hello.springboothello.dao;
+package com.hello.springboothello.dao.jpa;
 
 import com.hello.springboothello.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;

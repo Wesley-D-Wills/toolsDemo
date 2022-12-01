@@ -15,8 +15,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("user主键id")
-    private int userId;
+    private Integer id;
 
     @Column
     private String username;
+
+    private int age;
+    private String address;
+    private String telNum;
+    private String email;
 }
