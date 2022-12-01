@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+// 补充 @Entity和@Table 区别 https://www.jb51.net/article/234705.htm
 @Data
 @Entity
 @Table(name = "tb_user")
