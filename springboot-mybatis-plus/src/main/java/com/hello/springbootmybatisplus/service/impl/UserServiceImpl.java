@@ -22,6 +22,7 @@ public class UserServiceImpl implements UserService {
 
         // 使用mybatis的方式
         userDao.save(user);
+        userDao.insert(user);
     }
 
     @Override
