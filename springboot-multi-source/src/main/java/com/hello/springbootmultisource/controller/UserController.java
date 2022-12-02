@@ -1,20 +1,16 @@
-package com.hello.springboothello.controller;
+package com.hello.springbootmultisource.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.hello.springboothello.dto.ResponseResult;
-import com.hello.springboothello.entity.groups.UserGroups;
-import com.hello.springboothello.entity.User;
-import com.hello.springboothello.entity.UserParam;
-import com.hello.springboothello.service.UserService;
+
+import com.hello.springbootmultisource.dto.ResponseResult;
+import com.hello.springbootmultisource.entity.User;
+import com.hello.springbootmultisource.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -78,35 +74,5 @@ public class UserController {
     @ApiOperation(value = "update接口", httpMethod = "POST", notes = "这个是修改user的接口")
     public ResponseResult<Integer> updateUser(@RequestBody User user) {
         return ResponseResult.success(userService.update(user));
-    }
-
-    @PostMapping("add")
-    public ResponseEntity<String> addUserParam(@Validated(UserGroups.AddValidationGroup.class) @RequestBody UserParam userParam
-                                                 /* BindingResult bindingResult*/) {
-//        if (bindingResult.hasErrors()) {
-//            List<ObjectError> errors = bindingResult.getAllErrors();
-//            errors.forEach(p -> {
-//                FieldError fieldError = (FieldError) p;
-//                logger.error("Invalid parameter : object - {}, field - {}, errorMessage - {}",
-//                        fieldError.getObjectName(), fieldError.getField(), fieldError.getDefaultMessage());
-//            });
-//            return ResponseEntity.badRequest().body("invalid paramter");
-//        }
-        return ResponseEntity.ok("success");
-    }
-
-    @PostMapping("update")
-    public ResponseEntity<String> updateUserParam(@Validated @RequestBody UserParam userParam
-                                                 /* BindingResult bindingResult*/) {
-//        if (bindingResult.hasErrors()) {
-//            List<ObjectError> errors = bindingResult.getAllErrors();
-//            errors.forEach(p -> {
-//                FieldError fieldError = (FieldError) p;
-//                logger.error("Invalid parameter : object - {}, field - {}, errorMessage - {}",
-//                        fieldError.getObjectName(), fieldError.getField(), fieldError.getDefaultMessage());
-//            });
-//            return ResponseEntity.badRequest().body("invalid paramter");
-//        }
-        return ResponseEntity.ok("success");
     }
 }

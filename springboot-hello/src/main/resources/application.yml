@@ -1,4 +1,4 @@
 
 spring:
   profiles:
-    active: mysql
+    active: mysql # inner mysql

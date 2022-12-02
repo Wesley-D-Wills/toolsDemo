@@ -13,6 +13,7 @@
         <module>mySqlDemo</module>
         <module>springboot-hello</module>
         <module>anno-demo</module>
+        <module>springboot-multi-source</module>
     </modules>
 
     <properties>
