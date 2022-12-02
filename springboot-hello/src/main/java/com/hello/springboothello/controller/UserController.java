@@ -1,5 +1,7 @@
 package com.hello.springboothello.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.hello.springboothello.dto.ResponseResult;
 import com.hello.springboothello.entity.groups.UserGroups;
 import com.hello.springboothello.entity.User;
@@ -17,6 +19,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -39,6 +42,20 @@ public class UserController {
     @ApiOperation(value = "list接口", httpMethod = "GET", notes = "获取全部user数据")
     public ResponseResult<List<User>> getUsers() {
         return ResponseResult.success(userService.list());
+    }
+
+    @PostMapping("page")
+    @ApiOperation(value = "分页查询接口", httpMethod = "POST", notes = "获取分页user数据")
+    public ResponseResult<PageInfo<User>> getPageUsers(@RequestBody Map<String, Integer> pageInfo) {
+        // 直接返回所有数据
+        // return ResponseResult.success(userService.list());
+
+        // 分页查询（物理分页）
+        PageHelper.startPage(pageInfo.getOrDefault("pageNum", 0),
+                pageInfo.getOrDefault("pageSize", 3));
+        List<User> list = userService.list();
+        PageInfo<User> pageInfoResult = new PageInfo<>(list);
+        return ResponseResult.success(pageInfoResult);
     }
 
     @GetMapping("find/{userId}")

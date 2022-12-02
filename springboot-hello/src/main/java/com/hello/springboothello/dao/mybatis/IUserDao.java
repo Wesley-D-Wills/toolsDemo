@@ -16,4 +16,6 @@ public interface IUserDao {
     int update(User user);
 
     int save(User user);
+
+//    List<User> pageFind();
 }
